@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>waiting</title>
+  <title>TACT-AIM-html</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
@@ -42,6 +42,29 @@ async function loadZip() {
 
 loadZip();
 </script>
+
+<style>
+    #viewer {
+        display: block;
+        width: 100%;
+        height: 100vh;
+        border: none;           /* 枠を消す */
+        outline: none;          /* フォーカス枠を消す */
+        box-shadow: none;       /* 影を消す */
+        margin: 0;
+        padding: 0;
+        background: transparent; /* 背景を透明に */
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    html, body {
+        height: 100%;
+    }
+</style>
 
 </body>
 </html>
