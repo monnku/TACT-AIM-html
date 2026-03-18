@@ -68,6 +68,7 @@ async function loadZip() {
         // ここでprogressを取得
         const htmlContent = await indexFile.async("string", (metadata) => {
             const percent = Math.floor(metadata.percent);
+            percentText.textContent = percent + "%";
         });
 
         const blob = new Blob([htmlContent], { type: "text/html" });
