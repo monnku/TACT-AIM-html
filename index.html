@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>waiting</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+
+<iframe id="viewer" style="width:100%; height:100vh;"></iframe>
+
+<script>
+async function loadZip() {
+    try {
+        // 同じ階層の index.zip を取得
+        const response = await fetch("./index.zip");
+        if (!response.ok) throw new Error("ZIP取得失敗");
+
+        const arrayBuffer = await response.arrayBuffer();
+
+        // ZIPを解凍
+        const zip = await JSZip.loadAsync(arrayBuffer);
+
+        // index.html を取得
+        const indexFile = zip.file("index.html");
+        if (!indexFile) {
+            document.body.innerHTML = "index.html が見つからない";
+            return;
+        }
+
+        const htmlContent = await indexFile.async("string");
+
+        // 表示
+        const blob = new Blob([htmlContent], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        document.getElementById("viewer").src = url;
+
+    } catch (e) {
+        document.body.innerHTML = "エラー: " + e.message;
+    }
+}
+
+loadZip();
+</script>
+
+</body>
+</html>
