@@ -27,26 +27,12 @@
       z-index: 9999;
     }
 
-    /* バーの枠 */
-    #bar-container {
-      width: 60%;
-      height: 20px;
-      border: 1px solid #fff;
-    }
-
-    /* 実際のバー */
-    #bar {
-      width: 0%;
-      height: 100%;
-      background: #fff;
-      transition: width 0.1s linear;
-    }
-
     /* パーセント表示 */
     #percent {
       color: #fff;
       margin-top: 10px;
       font-family: monospace;
+      font-size:30px;
     }
 
     iframe {
@@ -69,9 +55,7 @@
 
 <script>
 async function loadZip() {
-    const bar = document.getElementById("bar");
     const percentText = document.getElementById("percent");
-    const loading = document.getElementById("loading");
 
     try {
         const response = await fetch("./index.zip");
@@ -84,9 +68,6 @@ async function loadZip() {
         // ここでprogressを取得
         const htmlContent = await indexFile.async("string", (metadata) => {
             const percent = Math.floor(metadata.percent);
-
-            bar.style.width = percent + "%";
-            percentText.textContent = percent + "%";
         });
 
         const blob = new Blob([htmlContent], { type: "text/html" });
