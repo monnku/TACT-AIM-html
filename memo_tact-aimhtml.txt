@@ -1,4 +1,3 @@
-"""
 <h1 class="loading-text">Credit: @uk-400様</h1>
 と調べて
     <h2 class="username" onclick="
@@ -13,4 +12,5 @@ cssの所らへんに
       cursor: pointer;
     }
 これを追加する
-"""
+
+→index.htmlに名前を変えたのちにzipに圧縮してあっぷろおど
